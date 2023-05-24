@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { createContext, useContext, useEffect, useState } from 'react'
-import getNews from '../assets/helper/getNews'
+import getNews from '../helper/getNews'
 import { useUser } from './UserContext'
 
 const NewsContext = createContext([])
@@ -11,19 +11,19 @@ export function useNews() {
 
 export default function NewsProvider({ children }) {
   const [news_list, setNews_list] = useState([])
-  const {user} = useUser()
+  const { user } = useUser()
 
   useEffect(() => {
-    const logged_in = '/api/user-news'
-    const logged_out = '/api/news'
-    const base_url = 'https://admin.snmleathers.com'
-
     const config = {
+      baseURL: 'http://backend-laravel-api.test',
       method: 'get',
-      url: base_url + (user ? logged_in : logged_out),
-      headers: {
-        Authorization: user?.auth || '',
-      },
+      url: '/api/news',
+      headers: {},
+    }
+
+    if (user) {
+      config.url = '/api/user-news'
+      config.headers.Authorization = `Bearer ${user.auth}`
     }
 
     axios
@@ -37,6 +37,7 @@ export default function NewsProvider({ children }) {
         }
       })
       .catch((err) => {
+        console.dir(err)
         alert(err.message)
       })
   }, [user])

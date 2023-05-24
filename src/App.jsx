@@ -1,9 +1,9 @@
 import { Route, Switch } from 'wouter'
-import Layout from './assets/components/Layout'
-import Home from './assets/pages/Home'
-import Login from './assets/components/Login'
-import SignUp from './assets/components/SignUp'
-import PublicRoute from './assets/routes/PublicRoute'
+import Home from './pages/Home'
+import Layout from './components/Layout'
+import Login from './pages/Login'
+import PublicRoute from './routes/PublicRoute'
+import SignUp from './pages/SignUp'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           </PublicRoute>
         </Route>
 
-        <Route path="/signup">
+        <Route path="/signup">~
           <PublicRoute>
             <SignUp />
           </PublicRoute>

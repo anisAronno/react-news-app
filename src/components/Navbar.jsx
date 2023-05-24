@@ -1,9 +1,9 @@
-import React from 'react'
-import SearchBar from './SearchBar'
-import { Link } from 'wouter'
-import { useUser } from '../../context/UserContext'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import React from 'react'
+import { Link } from 'wouter'
+import { useUser } from '../context/UserContext'
+import SearchBar from './SearchBar'
 
 export default function Navbar() {
   const { user, setUser } = useUser()
@@ -16,7 +16,7 @@ export default function Navbar() {
     }
 
     axios
-      .post('https://admin.snmleathers.com/api/logout', null, { headers })
+      .post('http://backend-laravel-api.test/api/logout', null, { headers })
       .then((res) => {
         if (res.status === 200) {
           Cookies.remove('token')
@@ -24,7 +24,6 @@ export default function Navbar() {
         }
       })
       .catch((err) => {
-        console.log(err)
         alert(err.response.data.message)
       })
   }
@@ -36,6 +35,11 @@ export default function Navbar() {
           <SearchBar />
           <div className="flex items-center">
             <div className="ml-4">
+              <Link href="/">
+                <a className="text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer">
+                  Home
+                </a>
+              </Link>
               {user ? (
                 <a
                   className="text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer"
