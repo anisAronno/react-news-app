@@ -1,14 +1,14 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import { useLocation } from 'wouter'
 import { useForm } from 'react-hook-form'
+import { useLocation } from 'wouter'
 
 export default function SignUp() {
   const { register, handleSubmit, reset } = useForm()
   const [location, navigate] = useLocation()
 
   const onSubmit = ({ name, email, password, c_password }) => {
-    const endpoint = 'https://admin.snmleathers.com/api/register'
+    const endpoint = 'http://backend-laravel-api.test/api/register'
     const params = {
       name,
       email,

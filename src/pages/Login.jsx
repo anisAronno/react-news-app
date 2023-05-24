@@ -8,7 +8,7 @@ export default function Login() {
   const { setUser } = useUser()
 
   const onSubmit = ({ email, password }) => {
-    const endpoint = 'https://admin.snmleathers.com/api/login'
+    const endpoint = 'http://backend-laravel-api.test/api/login'
     const params = {
       email,
       password,

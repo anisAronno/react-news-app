@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useState } from 'react'
-import Cookies from 'js-cookie'
 import axios from 'axios'
+import Cookies from 'js-cookie'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const UserContext = createContext({})
 
@@ -15,7 +15,7 @@ export default function UserProvider({ children }) {
     const token = Cookies.get('token')
     if (token) {
       const config = {
-        url: 'https://admin.snmleathers.com/api/user',
+        url: 'http://backend-laravel-api.test/api/user',
         headers: {
           Authorization: `Bearer ${token}`,
         },
