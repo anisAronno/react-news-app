@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useLocation } from 'wouter'
 
 export default function SearchBar() {
+  const [value, setValue] = useState('')
+  const [_, navigate] = useLocation()
+  const handleValue = (e) => setValue(e.target.value)
+  const handleSubmit = () => {
+    const key = value.trim()
+    if (key) {
+      navigate(`/search/${key}`)
+    }
+  }
+
   return (
-    <div className="relative">
+    <form className="relative bg-black" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="What kind of news?"
         className="px-4 pr-10 py-1 rounded-md focus:outline-none w-56 sm:w-auto"
+        value={value}
+        onChange={handleValue}
       />
-      <button className="absolute inset-y-0 right-0 px-2 text-gray-600 hover:text-gray-800 rounded-r-md">
+      <button
+        className="absolute inset-y-0 right-0 px-2 text-gray-600 hover:text-gray-800 rounded-r-md"
+        type="submit"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -24,6 +40,6 @@ export default function SearchBar() {
           />
         </svg>
       </button>
-    </div>
+    </form>
   )
 }

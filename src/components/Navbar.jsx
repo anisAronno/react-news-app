@@ -1,9 +1,9 @@
-import axios from 'axios'
-import Cookies from 'js-cookie'
 import React from 'react'
+import axios from 'axios'
 import { Link } from 'wouter'
-import { useUser } from '../context/UserContext'
+import Cookies from 'js-cookie'
 import SearchBar from './SearchBar'
+import { useUser } from '../context/UserContext'
 
 export default function Navbar() {
   const { user, setUser } = useUser()
@@ -16,7 +16,7 @@ export default function Navbar() {
     }
 
     axios
-      .post('http://backend-laravel-api.test/api/logout', null, { headers })
+      .post('https://admin.snmleathers.com/api/logout', null, { headers })
       .then((res) => {
         if (res.status === 200) {
           Cookies.remove('token')

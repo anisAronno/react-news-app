@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import Login from './pages/Login'
 import PublicRoute from './routes/PublicRoute'
 import SignUp from './pages/SignUp'
+import Search from './components/Search'
 
 function App() {
   return (
@@ -15,11 +16,11 @@ function App() {
           </PublicRoute>
         </Route>
 
-        <Route path="/signup">~
-          <PublicRoute>
-            <SignUp />
-          </PublicRoute>
+        <Route path="/signup">
+          <SignUp />
         </Route>
+
+        <Route path="/search/:keys" component={Search} />
 
         <Route component={Home} />
       </Switch>

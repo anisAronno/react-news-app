@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { createContext, useContext, useEffect, useState } from 'react'
+import axios from 'axios'
 import getNews from '../helper/getNews'
 import { useUser } from './UserContext'
 
@@ -15,7 +15,7 @@ export default function NewsProvider({ children }) {
 
   useEffect(() => {
     const config = {
-      baseURL: 'http://backend-laravel-api.test',
+      baseURL: 'https://admin.snmleathers.com',
       method: 'get',
       url: '/api/news',
       headers: {},
