@@ -34,11 +34,7 @@ export default function Navbar() {
         <div className="flex flex-col-reverse md:flex-row items-center justify-between h-16">
           <SearchBar />
           <div className="flex items-center">
-            <div className="ml-4">
-              
-              <a className="text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer">
-                Home
-              </a>
+            <div className="ml-4"> 
 
               <Link href="/">
                 <a className="text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer">
